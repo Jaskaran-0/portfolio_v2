@@ -1,0 +1,32 @@
+/* ─────────────────────────────────────────────────────────
+   Design Tokens — Jaskaran Singh Portfolio
+   Single source of truth for all CSS custom properties.
+   Import this in globals.css — never define tokens elsewhere.
+───────────────────────────────────────────────────────── */
+
+:root {
+  /* ── Colors ── */
+  --red:     #FF3C00;          /* Primary accent — Tarantino aggression */
+  --yellow:  #F5C518;          /* Secondary — Pulp Fiction yellow */
+  --bg:      #050505;          /* Near-black base */
+  --bg2:     #0A0A0A;
+  --bg3:     #111111;
+  --text:    #F5F0EB;          /* Warm white */
+  --text2:   rgba(255, 255, 255, 0.40);
+  --text3:   rgba(255, 255, 255, 0.18);
+  --border:  rgba(255, 60, 0, 0.15);
+  --border2: rgba(255, 255, 255, 0.07);
+
+  /* ── Typography scale ── */
+  --font-display: 'Bebas Neue', sans-serif;   /* Headings only */
+  --font-ui:      'Syne', sans-serif;         /* Nav, buttons, labels, body */
+  --font-mono:    'Space Mono', monospace;    /* Eyebrows, tags, terminal */
+  --font-accent:  'Special Elite', cursive;   /* Quotes, loader def, terminal flavor ONLY */
+
+  /* ── Letter spacing ── */
+  --tracking-display: 0.04em;
+
+  /* ── Section spacing ── */
+  --section-py: 72px;
+  --section-px: 7vw;
+}

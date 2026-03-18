@@ -1,26 +1,114 @@
 @import "tailwindcss";
+@import "../styles/tokens.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ─────────────────────────────────────────────────────────
+   @font-face — Self-hosted fonts (no Google Fonts in prod)
+───────────────────────────────────────────────────────── */
+
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url('/fonts/BebasNeue-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@font-face {
+  font-family: 'Syne';
+  src: url('/fonts/Syne-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@font-face {
+  font-family: 'Syne';
+  src: url('/fonts/Syne-ExtraBold.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Space Mono';
+  src: url('/fonts/SpaceMono-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Special Elite';
+  src: url('/fonts/SpecialElite-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ─────────────────────────────────────────────────────────
+   Tailwind v4 — @theme (maps tokens to Tailwind utilities)
+───────────────────────────────────────────────────────── */
+
+@theme {
+  /* Colors — accessible as bg-red, text-yellow, border-border, etc. */
+  --color-red:     #FF3C00;
+  --color-yellow:  #F5C518;
+  --color-bg:      #050505;
+  --color-bg2:     #0A0A0A;
+  --color-bg3:     #111111;
+  --color-text:    #F5F0EB;
+  --color-text2:   rgba(255, 255, 255, 0.40);
+  --color-text3:   rgba(255, 255, 255, 0.18);
+  --color-border:  rgba(255, 60, 0, 0.15);
+  --color-border2: rgba(255, 255, 255, 0.07);
+
+  /* Fonts — accessible as font-display, font-ui, font-mono, font-accent */
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-ui:      'Syne', sans-serif;
+  --font-mono:    'Space Mono', monospace;
+  --font-accent:  'Special Elite', cursive;
+}
+
+/* ─────────────────────────────────────────────────────────
+   Resets
+───────────────────────────────────────────────────────── */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ─────────────────────────────────────────────────────────
+   Base
+───────────────────────────────────────────────────────── */
+
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: y proximity; /* proximity — never mandatory near Three.js */
+  height: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-ui);
+  cursor: none; /* custom cursor takes over */
+  min-height: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Restore default cursor for inputs/textareas (custom cursor shouldn't hijack these) */
+input,
+textarea,
+select {
+  cursor: text;
+}
+
+a,
+button {
+  cursor: none;
 }
