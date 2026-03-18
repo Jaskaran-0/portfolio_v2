@@ -235,15 +235,11 @@ claude mcp add github -- npx -y @modelcontextprotocol/server-github
 # 2. Context7 — live docs, prevents stale GSAP/Three.js/Next.js API calls
 claude mcp add context7 -- npx -y @upstash/context7-mcp@latest
 
-# 3. 21st.dev Magic — generate components with 3 style variants, pick one
-npx @21st-dev/cli@latest install --api-key YOUR_21ST_KEY
-# In session: /ui [describe component] to trigger
+# 3. Puppeteer — screenshots at any viewport without leaving terminal
+claude mcp add puppeteer -- npx @modelcontextprotocol/server-puppeteer
 
-# 4. Puppeteer — screenshots at any viewport without leaving terminal
-claude mcp add puppeteer -- npx -y @modelcontextprotocol/server-puppeteer
-
-# 5. Sequential Thinking — for architectural decisions
-claude mcp add sequential-thinking -- npx -y @modelcontextprotocol/server-sequential-thinking
+# 4. Sequential Thinking — for architectural decisions
+claude mcp add sequential-thinking -- npx @modelcontextprotocol/server-sequential-thinking
 ```
 
 ---
@@ -281,7 +277,7 @@ claude mcp add sequential-thinking -- npx -y @modelcontextprotocol/server-sequen
 
 **What happened in order:**
 1. Started with goal: portfolio as experience, not resume. Inspirations: Apple, Rockstar, Google product pages
-2. Explored MCP integrations for UI/UX (21st.dev Magic, Figma, Context7, Puppeteer, Sequential Thinking)
+2. Explored MCP integrations for UI/UX (Context7, Puppeteer, Sequential Thinking)
 3. Built palette comparison demo — 4 options (Navy+Gold, Black+Blue, Charcoal+Crimson, Dark+Emerald)
 4. Selected **Charcoal + Crimson** as base palette
 5. Built font comparison — Syne, Epilogue, Figtree. Selected **Syne 800**

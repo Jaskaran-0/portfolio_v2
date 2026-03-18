@@ -200,8 +200,7 @@ npm install --save-dev @next/bundle-analyzer
 # MCP Servers
 claude mcp add github -- npx -y @modelcontextprotocol/server-github
 claude mcp add context7 -- npx -y @upstash/context7-mcp@latest
-npx @21st-dev/cli@latest install --api-key YOUR_KEY
-claude mcp add puppeteer -- npx -y @modelcontextprotocol/server-puppeteer
+claude mcp add puppeteer -- npx @modelcontextprotocol/server-puppeteer
 claude mcp add sequential-thinking -- npx -y @modelcontextprotocol/server-sequential-thinking
 
 # First run

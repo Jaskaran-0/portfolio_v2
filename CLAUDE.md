@@ -4,6 +4,17 @@
 
 ---
 
+## SESSION START — MANDATORY
+Do this before any other action, every session, no exceptions:
+1. Read tasks/lessons.md — internalize standing rules
+2. Read tasks/todo.md — know current state
+3. Update CURRENT SESSION section in todo.md with today's planned tasks
+4. Confirm /mcp shows github, context7, puppeteer, sequential-thinking connected
+5. Mark todo items [x] as you complete them — not at the end
+6. Run /lesson before /exit every session
+
+---
+
 ## WORKFLOW ORCHESTRATION
 
 ### 1. Plan Mode Default
@@ -73,7 +84,7 @@
 **Location:** Hamilton, ON, Canada  
 **Goal:** Cinematic experience portfolio. Not a resume. Gets him hired.  
 **Live URL:** `jaskaran-0.github.io` (GitHub Pages static export)  
-**Repo:** `github.com/Jaskaran-0/portfolio`
+**Repo:** `github.com/Jaskaran-0/portfolio_v2`
 
 ---
 
@@ -81,8 +92,8 @@
 
 | Layer | Choice | Reason |
 |---|---|---|
-| Framework | Next.js 14 App Router + TypeScript | Static export, SEO, Canadian employers recognize it |
-| Styling | Tailwind CSS + CSS custom properties | Utility layout + design token system |
+| Framework | Next.js 16 App Router + TypeScript | Static export, SEO, Canadian employers recognize it |
+| Styling | Tailwind v4 + CSS custom properties — `@theme` directive in globals.css, no tailwind.config.ts | Utility layout + design token system |
 | 3D / WebGL | Three.js r128 | Hero icosahedron + shard scene, RCAF arch diagram |
 | Animation | GSAP 3 + ScrollTrigger | Scroll-driven reveals, SplitText character animation |
 | Fonts | Bebas Neue, Syne, Space Mono, Special Elite | DO NOT substitute |
@@ -195,15 +206,11 @@ claude mcp add github -- npx -y @modelcontextprotocol/server-github
 # 2. Context7 — live docs for GSAP, Three.js, Next.js (prevents stale API)
 claude mcp add context7 -- npx -y @upstash/context7-mcp@latest
 
-# 3. 21st.dev Magic — component generation with style variants
-npx @21st-dev/cli@latest install --api-key YOUR_21ST_KEY
-# In Claude Code: /ui [describe component] → get 3 variants → pick one
+# 3. Puppeteer — screenshot at any viewport without leaving terminal
+claude mcp add puppeteer -- npx @modelcontextprotocol/server-puppeteer
 
-# 4. Puppeteer — screenshot at any viewport without leaving terminal
-claude mcp add puppeteer -- npx -y @modelcontextprotocol/server-puppeteer
-
-# 5. Sequential Thinking — for architectural decisions
-claude mcp add sequential-thinking -- npx -y @modelcontextprotocol/server-sequential-thinking
+# 4. Sequential Thinking — for architectural decisions
+claude mcp add sequential-thinking -- npx @modelcontextprotocol/server-sequential-thinking
 ```
 
 ---
@@ -321,13 +328,3 @@ module.exports = nextConfig
 6. **Scroll snap + Three.js** — `scroll-snap-type: mandatory` fights Three.js animation frames. Use `proximity` only
 7. **`useEffect` cleanup** — Three.js renderer must be disposed in cleanup: `renderer.dispose()`. Memory leak otherwise
 
----
-
-## SESSION START CHECKLIST
-
-Before every Claude Code session, confirm:
-- [ ] Read `tasks/lessons.md` — know what went wrong last time
-- [ ] Read `tasks/todo.md` — know what's in progress
-- [ ] MCP servers running (`/mcp` to verify)
-- [ ] On correct branch (not main for feature work)
-- [ ] Context7 active — especially for Three.js / GSAP / Next.js 14 API calls

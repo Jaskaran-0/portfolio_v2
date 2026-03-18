@@ -1,0 +1,3 @@
+{
+    "disabledMcpjsonServers": ["github", "context7", "puppeteer", "sequential-thinking"]
+}
