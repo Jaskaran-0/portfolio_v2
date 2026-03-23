@@ -20,6 +20,39 @@ Newest entries at the TOP. Act on every rule listed here before writing code.
 - Static export: generateStaticParams() required for all dynamic routes
 - GSAP must be client-side only in Next.js App Router
 - Pixel ratio cap at 2 — never remove this, it tanks mobile perf
+- GSAP SplitText is a premium Club GreenSock plugin — not in the free `gsap` npm package; always implement char splitting via manual DOM spans
+- Next.js App Router ignores any directory prefixed with `_` — never name test/utility pages `_something` or they won't be routable
+- Always wrap dynamic `import()` calls inside useEffect in try/catch — failures are swallowed silently otherwise
+
+## 2026-03-23 — Phase 2C + Hero: all components built, wired into layout/page
+
+**What worked:** Dynamic imports (`import('@/lib/three-hero')`) inside useEffect correctly keeps Three.js out of the SSR bundle. Client components (Cursor, Loader, Nav, Terminal) import cleanly from server layout.tsx — Next.js handles the boundary automatically. `chapterCardEntrance` and `filmBurn` called from Chapter.tsx via IntersectionObserver fires correctly on scroll entry.
+**What went wrong:** Nothing broke on first build — but Hero uses `Promise.all` for three dynamic imports; if any one fails silently the scene won't init and there's no error surfaced to the user.
+**Root cause:** Dynamic import failures inside useEffect are swallowed unless explicitly caught.
+**Rule going forward:** Always wrap dynamic import blocks in try/catch inside useEffect; log or surface errors so silent failures don't look like working code.
+**Files changed:** components/Cursor.tsx, components/Loader.tsx, components/Nav.tsx, components/Terminal.tsx, components/Chapter.tsx, sections/Hero.tsx, app/layout.tsx, app/page.tsx
+
+---
+
+## 2026-03-23 — Next.js App Router silently ignores `_`-prefixed directories
+
+**What worked:** Renaming `_test-libs` → `test-libs` immediately fixed routing with no other changes
+**What went wrong:** Created smoke test page at `app/_test-libs/page.tsx` — it never appeared in the build route list
+**Root cause:** App Router treats `_`-prefixed directories as private/excluded from routing by convention, the same way `_components` is used for co-located non-route files
+**Rule going forward:** Never name a routable page directory with a leading underscore in Next.js App Router; use `_` prefix only for intentionally non-routable folders (e.g. `_components`, `_utils`)
+**Files changed:** app/test-libs/page.tsx (created, verified, deleted)
+
+---
+
+## 2026-03-23 — Phase 2B: lib/gsap.ts and lib/split-text.ts implemented
+
+**What worked:** Manual DOM-based character splitting via `splitChars()` cleanly replaces GSAP SplitText with zero dependencies. gsapRegister() guard pattern (single `registered` flag) prevents duplicate ScrollTrigger registration across hot reloads. TypeScript type-check passed clean first try.
+**What went wrong:** Initially assumed GSAP SplitText was available in the free `gsap` npm package — it is not; it requires a Club GreenSock subscription.
+**Root cause:** CLAUDE.md spec referenced SplitText without noting the license constraint. The package.json only has `gsap: ^3.14.2` (free tier), so premium plugins are unavailable.
+**Rule going forward:** Always check whether a GSAP plugin is free-tier or Club GreenSock before using it; if premium, implement the equivalent via plain DOM manipulation.
+**Files changed:** lib/gsap.ts, lib/split-text.ts, tasks/todo.md
+
+---
 
 ## VERSION NOTES — Actual installed stack (use these, not the spec targets)
 
