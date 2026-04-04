@@ -107,7 +107,7 @@ export default function Hero() {
           flexDirection: 'column',
           justifyContent: 'center',
           padding: '0 clamp(24px, 8vw, 120px)',
-          maxWidth: '55%',
+          maxWidth: 'clamp(300px, 55%, 700px)',
         }}
       >
         {/* Eyebrow */}

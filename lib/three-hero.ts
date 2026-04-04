@@ -9,6 +9,14 @@ interface HeroSceneOptions {
   onReady?: () => void
 }
 
+interface ShardMesh extends THREE.Object3D {
+  _base: THREE.Vector3
+  _vel: THREE.Vector3
+  _rs: THREE.Vector3
+  _ph: number
+  _da: number
+}
+
 export class HeroScene {
   private renderer: THREE.WebGLRenderer
   private scene: THREE.Scene
@@ -117,15 +125,15 @@ export class HeroScene {
         Math.random() * Math.PI * 2
       )
 
-      ;(mesh as any)._base = mesh.position.clone()
-      ;(mesh as any)._vel = new THREE.Vector3()
-      ;(mesh as any)._rs = new THREE.Vector3(
+      ;(mesh as ShardMesh)._base = mesh.position.clone()
+      ;(mesh as ShardMesh)._vel = new THREE.Vector3()
+      ;(mesh as ShardMesh)._rs = new THREE.Vector3(
         (Math.random() - 0.5) * 0.011,
         (Math.random() - 0.5) * 0.011,
         (Math.random() - 0.5) * 0.007
       )
-      ;(mesh as any)._ph = Math.random() * Math.PI * 2
-      ;(mesh as any)._da = Math.random() * 0.004 + 0.001
+      ;(mesh as ShardMesh)._ph = Math.random() * Math.PI * 2
+      ;(mesh as ShardMesh)._da = Math.random() * 0.004 + 0.001
 
       this.scene.add(mesh)
       this.shards.push(mesh)
@@ -213,7 +221,7 @@ export class HeroScene {
 
       // Shard updates
       this.shards.forEach(s => {
-        const m = s as any
+        const m = s as ShardMesh
         s.rotation.x += m._rs.x
         s.rotation.y += m._rs.y
         s.rotation.z += m._rs.z

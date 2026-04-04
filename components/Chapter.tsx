@@ -167,7 +167,7 @@ export default function Chapter({ num, title, quote, id, children }: ChapterProp
                                     opacity: 0,
                                 }}
                             >
-                                "{quote}"
+                                &ldquo;{quote}&rdquo;
                             </p>
                         )}
 

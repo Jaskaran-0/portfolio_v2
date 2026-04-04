@@ -84,15 +84,15 @@ export default function About() {
         </p>
 
         <p style={{ fontFamily: 'var(--font-ui)', fontSize: 'clamp(15px, 1.5vw, 17px)', lineHeight: 1.8, color: 'var(--text)', marginBottom: 20 }}>
-          I'm based in Hamilton, ON. Currently{' '}
+          I&apos;m based in Hamilton, ON. Currently{' '}
           <Redacted>actively looking for the right team</Redacted> — backend-heavy,
-          product-focused, ships real things. If you're building something that
-          scares you a little, that's my lane.
+          product-focused, ships real things. If you&apos;re building something that
+          scares you a little, that&apos;s my lane.
         </p>
 
         <p style={{ fontFamily: 'var(--font-ui)', fontSize: 'clamp(15px, 1.5vw, 17px)', lineHeight: 1.8, color: 'var(--text2)' }}>
           <em>Fun fact: this portfolio is named after a Tarantino aesthetic. The code
-          is not — it's clean, typed, and documented.</em>
+          is not — it&apos;s clean, typed, and documented.</em>
         </p>
 
         <div style={{ marginTop: 36, display: 'flex', gap: 12, flexWrap: 'wrap' }}>

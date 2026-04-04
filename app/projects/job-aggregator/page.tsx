@@ -212,7 +212,7 @@ export default function JobAggregatorCaseStudy() {
           marginBottom: 48,
           lineHeight: 1,
         }}>
-          WHAT'S BUILT
+          WHAT&apos;S BUILT
         </h2>
 
         <div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -305,7 +305,7 @@ export default function JobAggregatorCaseStudy() {
           marginBottom: 48,
           lineHeight: 1,
         }}>
-          WHERE IT'S GOING
+          WHERE IT&apos;S GOING
         </h2>
 
         <div style={{ display: 'flex', flexDirection: 'column', maxWidth: 720 }}>
