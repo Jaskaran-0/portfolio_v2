@@ -64,15 +64,15 @@ export default function Chapter({ num, title, quote, id, children }: ChapterProp
       id={id}
       ref={rootRef}
       style={{
+        scrollMarginTop: '80px',
         minHeight: 'clamp(44vh, 48vh, 52vh)',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
         padding: 'clamp(32px, 6vw, 80px) clamp(24px, 8vw, 120px)',
         position: 'relative',
-        scrollSnapAlign: 'center',
-        borderBottom: '1px solid var(--border2)',
         overflow: 'hidden',
+        borderBottom: '1px solid var(--border2)',
       }}
     >
       {/* Film burn overlay */}
@@ -150,7 +150,7 @@ export default function Chapter({ num, title, quote, id, children }: ChapterProp
                 ref={quoteRef}
                 style={{
                   fontFamily: 'var(--font-accent)',
-                  fontSize: 14,
+                  fontSize: 'clamp(14px, 1.4vw, 16px)',
                   lineHeight: 1.7,
                   color: 'var(--text2)',
                   fontStyle: 'italic',

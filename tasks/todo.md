@@ -13,7 +13,7 @@
 - Wired layout.tsx (Cursor, Loader, Nav, Terminal) and page.tsx (Hero + 4 Chapter stubs)
 - Build: clean, zero errors
 
-**Up next:** Phase 3 remaining — About, Projects, Skills, Contact sections
+**Up next:** Phase 4 — Case study pages (/projects/rcaf, /projects/medichelper, /projects/job-aggregator)
 
 ---
 
@@ -47,10 +47,10 @@
 
 ### Phase 3 — Sections
 - [x] Hero.tsx — Three.js A+B scene (ico + shards), SplitText entrance
-- [ ] About.tsx — 3-layer parallax visual, redacted blocks
-- [ ] Projects.tsx — RCAF featured with 3D arch diagram, card grid
-- [ ] Skills.tsx — grouped chips, scroll reveal
-- [ ] Contact.tsx — massive heading, link buttons
+- [x] About.tsx — 3-layer parallax visual, redacted blocks
+- [x] Projects.tsx — RCAF featured with 3D arch diagram, card grid
+- [x] Skills.tsx — grouped chips, scroll reveal
+- [x] Contact.tsx — massive heading, link buttons
 
 ### Phase 4 — Case Study Pages
 - [ ] /projects/rcaf — full breakdown, arch diagram, metrics
