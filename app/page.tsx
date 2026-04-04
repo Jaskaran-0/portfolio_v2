@@ -1,5 +1,9 @@
-import Hero    from '@/sections/Hero'
-import Chapter from '@/components/Chapter'
+import Hero     from '@/sections/Hero'
+import About    from '@/sections/About'
+import Projects from '@/sections/Projects'
+import Skills   from '@/sections/Skills'
+import Contact  from '@/sections/Contact'
+import Chapter  from '@/components/Chapter'
 
 export default function Home() {
   return (
@@ -12,6 +16,7 @@ export default function Home() {
         title="THE MAN BEHIND THE MACHINE"
         quote="I'm not in the business of making pretty things. I'm in the business of making things that work."
       />
+      <About />
 
       <Chapter
         id="projects"
@@ -19,6 +24,7 @@ export default function Home() {
         title="THE WORK"
         quote="Three projects. Real problems. Shipped code."
       />
+      <Projects />
 
       <Chapter
         id="skills"
@@ -26,6 +32,7 @@ export default function Home() {
         title="THE ARSENAL"
         quote="Tools are just tools. It's the hand that matters."
       />
+      <Skills />
 
       <Chapter
         id="contact"
@@ -33,6 +40,7 @@ export default function Home() {
         title="LET'S TALK"
         quote="No recruiters from non-technical firms. Everyone else: proceed."
       />
+      <Contact />
     </main>
   )
 }

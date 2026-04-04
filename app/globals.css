@@ -1,9 +1,9 @@
-@import "tailwindcss";
+﻿@import "tailwindcss";
 @import "../styles/tokens.css";
 
-/* ─────────────────────────────────────────────────────────
-   @font-face — Self-hosted fonts (no Google Fonts in prod)
-───────────────────────────────────────────────────────── */
+/* ---------------------------------------------------
+   @font-face - Self-hosted fonts (no Google Fonts in prod)
+--------------------------------------------------- */
 
 @font-face {
   font-family: 'Bebas Neue';
@@ -45,12 +45,12 @@
   font-display: swap;
 }
 
-/* ─────────────────────────────────────────────────────────
-   Tailwind v4 — @theme (maps tokens to Tailwind utilities)
-───────────────────────────────────────────────────────── */
+/* ---------------------------------------------------
+   Tailwind v4 - @theme (maps tokens to Tailwind utilities)
+--------------------------------------------------- */
 
 @theme {
-  /* Colors — accessible as bg-red, text-yellow, border-border, etc. */
+  /* Colors - accessible as bg-red, text-yellow, border-border, etc. */
   --color-red:     #FF3C00;
   --color-yellow:  #F5C518;
   --color-bg:      #050505;
@@ -62,16 +62,16 @@
   --color-border:  rgba(255, 60, 0, 0.15);
   --color-border2: rgba(255, 255, 255, 0.07);
 
-  /* Fonts — accessible as font-display, font-ui, font-mono, font-accent */
+  /* Fonts - accessible as font-display, font-ui, font-mono, font-accent */
   --font-display: 'Bebas Neue', sans-serif;
   --font-ui:      'Syne', sans-serif;
   --font-mono:    'Space Mono', monospace;
   --font-accent:  'Special Elite', cursive;
 }
 
-/* ─────────────────────────────────────────────────────────
+/* ---------------------------------------------------
    Resets
-───────────────────────────────────────────────────────── */
+--------------------------------------------------- */
 
 *,
 *::before,
@@ -81,14 +81,13 @@
   padding: 0;
 }
 
-/* ─────────────────────────────────────────────────────────
+/* ---------------------------------------------------
    Base
-───────────────────────────────────────────────────────── */
+--------------------------------------------------- */
 
 html {
-  scroll-behavior: smooth;
-  scroll-snap-type: y proximity; /* proximity — never mandatory near Three.js */
   height: 100%;
+  scroll-padding-top: 100px;
 }
 
 body {

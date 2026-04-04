@@ -13,6 +13,9 @@ Newest entries at the TOP. Act on every rule listed here before writing code.
 
 ## STANDING RULES (distilled from all sessions)
 
+- Nav hide animation: use `translateY(-40%)` not `-120%` — `-120%` sends the pill fully off-screen and it fails to return cleanly on scroll-up
+- Never bump Nav z-index above the Loader's z-index — Nav at 100 is correct; Loader sits above it during its run; bumping Nav to 900 breaks the loading screen
+
 - Special Elite is FLAVOR ONLY — never use for paragraph body text
 - Always check scroll-snap-type is `proximity` not `mandatory` near Three.js
 - Three.js cleanup: always `renderer.dispose()` in useEffect return
@@ -23,6 +26,27 @@ Newest entries at the TOP. Act on every rule listed here before writing code.
 - GSAP SplitText is a premium Club GreenSock plugin — not in the free `gsap` npm package; always implement char splitting via manual DOM spans
 - Next.js App Router ignores any directory prefixed with `_` — never name test/utility pages `_something` or they won't be routable
 - Always wrap dynamic `import()` calls inside useEffect in try/catch — failures are swallowed silently otherwise
+- Always read data files before writing — they may already have real content that would be silently overwritten
+
+## 2026-04-04 — Nav pill disappearing on scroll
+
+**What worked:** User identified the fix — `translateY(-120%)` → `translateY(-40%)` keeps the pill in the recoverable zone on scroll-up.
+**What went wrong:** I assumed the bug was z-index (100 → 900). That "fixed" layering but broke the Loader, which sits above the nav intentionally. The real bug was the hide transform overshooting.
+**Root cause:** `-120%` is more than the nav's own height — the pill flew completely off-screen and browser scroll jank prevented the show animation from triggering reliably. `-40%` gives a subtle nudge without losing the element.
+**Rule going forward:** For fixed UI elements with hide/show transforms, never translate more than ~50% of the element's own dimension. Verify the Loader's z-index before touching Nav's z-index — they are intentionally ordered (Loader > Nav).
+**Files changed:** components/Nav.tsx
+
+---
+
+## 2026-03-23 — Phase 3: About, Projects, Skills, Contact sections complete
+
+**What worked:** Using existing data/projects.ts schema (not overwriting it) — the file already had a 4th project (Water Tower IoT) and richer metric structure that would have been lost. Dynamic import + try/catch pattern for ArchScene worked cleanly. `gridProjects` export from data/projects.ts made the card grid trivial.
+**What went wrong:** Tried to create data/projects.ts without reading it first — Write tool blocked. Prevented data loss.
+**Root cause:** Assumed data files were stubs; they were already populated with real project data including a 4th project not referenced in CLAUDE.md.
+**Rule going forward:** Always read data files before writing them, even if you think they're stubs — real content may already exist.
+**Files changed:** sections/About.tsx, sections/Projects.tsx, sections/Skills.tsx, sections/Contact.tsx, app/page.tsx
+
+---
 
 ## 2026-03-23 — Phase 2C + Hero: all components built, wired into layout/page
 
