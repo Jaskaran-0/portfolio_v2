@@ -53,9 +53,9 @@
 - [x] Contact.tsx — massive heading, link buttons
 
 ### Phase 4 — Case Study Pages
-- [ ] /projects/rcaf — full breakdown, arch diagram, metrics
-- [ ] /projects/medichelper — system diagram, tech deep dive
-- [ ] /projects/job-aggregator — in-progress state, roadmap
+- [x] /projects/rcaf — full breakdown, arch diagram, metrics
+- [x] /projects/medichelper — system diagram, tech deep dive
+- [x] /projects/job-aggregator — in-progress state, roadmap
 
 ### Phase 5 — Polish + Deploy
 - [ ] Lighthouse audit (target 90+)
