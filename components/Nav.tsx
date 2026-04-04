@@ -37,27 +37,23 @@ export default function Nav() {
         return () => window.removeEventListener('scroll', onScroll);
     }, []);
 
-    // Active section via IntersectionObserver
+    // Active section — whichever section's top has most recently passed the midpoint
     useEffect(() => {
-        const sections = LINKS.map((l) => document.querySelector(l.href)).filter(
-            Boolean,
-        ) as Element[];
+        const update = () => {
+            const mid = window.innerHeight / 2;
+            let current = '';
+            for (const { href } of LINKS) {
+                const el = document.querySelector(href);
+                if (el && el.getBoundingClientRect().top <= mid) {
+                    current = href;
+                }
+            }
+            setActive(current);
+        };
 
-        if (!sections.length) return;
-
-        const obs = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        setActive('#' + entry.target.id);
-                    }
-                });
-            },
-            { rootMargin: '-40% 0px -40% 0px', threshold: 0 },
-        );
-
-        sections.forEach((s) => obs.observe(s));
-        return () => obs.disconnect();
+        window.addEventListener('scroll', update, { passive: true });
+        update();
+        return () => window.removeEventListener('scroll', update);
     }, []);
 
     const scrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {

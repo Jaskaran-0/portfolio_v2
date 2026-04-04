@@ -100,9 +100,7 @@ interface ChapterEntranceTargets {
   vertLine:   Element | null
   chapterNum: Element | null
   title:      Element | null
-  yellowRule: Element | null
   quote:      Element | null
-  bottomRule: Element | null
 }
 
 /**
@@ -123,9 +121,7 @@ export function chapterCardEntrance(
     [targets.vertLine,   { scaleY: 0, opacity: 0 }, { scaleY: 1, opacity: 1, duration: DUR_RULE * 0.9, ease: EASE_OUT_CIRC },   '-=0.2'],
     [targets.chapterNum, { opacity: 0, y: 8 },       { opacity: 1, y: 0,     duration: 0.4, ease: EASE_STANDARD },              '-=0.15'],
     [targets.title,      { opacity: 0, y: 14 },      { opacity: 1, y: 0,     duration: 0.55, ease: EASE_OUT_EXPO },             '-=0.25'],
-    [targets.yellowRule, { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 0.3, ease: EASE_OUT_CIRC },              '-=0.1'],
     [targets.quote,      { opacity: 0, y: 6 },       { opacity: 1, y: 0,     duration: 0.4, ease: EASE_STANDARD },              '-=0.05'],
-    [targets.bottomRule, { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: DUR_RULE, ease: EASE_OUT_CIRC },         '-=0.1'],
   ]
 
   steps.forEach(([el, fromVars, toVars, position]) => {

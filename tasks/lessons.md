@@ -13,6 +13,7 @@ Newest entries at the TOP. Act on every rule listed here before writing code.
 
 ## STANDING RULES (distilled from all sessions)
 
+- "Keep only X and Y" means remove EVERYTHING else — don't selectively remove one thing and leave others. When user says keep top + left, remove all other rules in one pass.
 - Nav hide animation: use `translateY(-40%)` not `-120%` — `-120%` sends the pill fully off-screen and it fails to return cleanly on scroll-up
 - Never bump Nav z-index above the Loader's z-index — Nav at 100 is correct; Loader sits above it during its run; bumping Nav to 900 breaks the loading screen
 
@@ -27,6 +28,16 @@ Newest entries at the TOP. Act on every rule listed here before writing code.
 - Next.js App Router ignores any directory prefixed with `_` — never name test/utility pages `_something` or they won't be routable
 - Always wrap dynamic `import()` calls inside useEffect in try/catch — failures are swallowed silently otherwise
 - Always read data files before writing — they may already have real content that would be silently overwritten
+
+## 2026-04-04 — Chapter.tsx: missed bottom rule when asked to remove decorative lines
+
+**What worked:** Removing yellowRule cleanly — ref, JSX, animation, type interface all cleaned up.
+**What went wrong:** User said "keep the top and one on left" — that implicitly means remove everything else. I removed the yellow rule but left the bottom rule. User had to tell me twice and do it themselves.
+**Root cause:** Parsed the request as "remove the yellow rule" instead of "audit all lines and keep only two."
+**Rule going forward:** When user says "keep only X and Y," treat it as a whitelist — identify ALL elements in that category and remove everything not on the list in one pass. Don't wait for the user to name each removal individually.
+**Files changed:** components/Chapter.tsx, lib/gsap.ts
+
+---
 
 ## 2026-04-04 — Nav pill disappearing on scroll
 

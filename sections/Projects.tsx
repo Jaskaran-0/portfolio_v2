@@ -2,6 +2,7 @@
 // Projects.tsx — Featured RCAF card (ArchScene on hover) + grid with 3D tilt + glare
 
 import { useEffect, useRef, useState } from 'react'
+import Link from 'next/link'
 import { featuredProject, gridProjects, type Project } from '@/data/projects'
 import { gsapRegister, attachCardTilt } from '@/lib/gsap'
 
@@ -148,7 +149,7 @@ function ProjectCard({ project }: { project: Project }) {
 
       {/* Case study link */}
       {project.caseStudyPath && (
-        <a
+        <Link
           href={project.caseStudyPath}
           data-cursor="target"
           style={{
@@ -168,7 +169,7 @@ function ProjectCard({ project }: { project: Project }) {
           onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.gap = '6px' }}
         >
           Case Study <span>→</span>
-        </a>
+        </Link>
       )}
     </div>
   )
@@ -315,7 +316,7 @@ function FeaturedCard() {
 
         <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
           {p.caseStudyPath && (
-            <a
+            <Link
               href={p.caseStudyPath}
               data-cursor="target"
               style={{
@@ -332,7 +333,7 @@ function FeaturedCard() {
               }}
             >
               Case Study →
-            </a>
+            </Link>
           )}
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, alignItems: 'center' }}>
             {p.stack.map(s => (
