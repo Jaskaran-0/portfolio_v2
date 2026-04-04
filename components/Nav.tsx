@@ -65,6 +65,7 @@ export default function Nav() {
     };
 
     return (
+        <>
         <nav
             aria-label='Site navigation'
             style={{
@@ -111,5 +112,19 @@ export default function Nav() {
                 );
             })}
         </nav>
+
+      <style>{`
+        @media (max-width: 480px) {
+          nav[aria-label="Site navigation"] {
+            padding: 6px 8px !important;
+          }
+          nav[aria-label="Site navigation"] a {
+            padding: 5px 8px !important;
+            font-size: 10px !important;
+            letter-spacing: 0.04em !important;
+          }
+        }
+      `}</style>
+    </>
     );
 }

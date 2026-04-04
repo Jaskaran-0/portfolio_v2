@@ -104,7 +104,7 @@ export default function Contact() {
           color: 'var(--text)',
           marginBottom: 20,
         }}>
-          LET'S MAKE<br />SOMETHING
+          LET&apos;S MAKE<br />SOMETHING
         </h2>
 
         <p style={{
@@ -116,7 +116,7 @@ export default function Contact() {
           margin: '0 auto 56px',
           fontStyle: 'italic',
         }}>
-          "The best work happens when both sides are slightly uncomfortable with how good the result might be."
+          &ldquo;The best work happens when both sides are slightly uncomfortable with how good the result might be.&rdquo;
         </p>
 
         {/* 4 link buttons */}
